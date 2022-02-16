@@ -4,6 +4,7 @@ const auth = require('../../middleware/auth')
 const {check , validationResult} = require('express-validator/check')
 const Profile = require('../../models/Profile')
 const User = require('../../models/User')
+const { route } = require('express/lib/application')
 
 // @route GET api/profile/me
 // @desc Get current users profile
@@ -113,5 +114,20 @@ async (req,res)=>{
         res.status(500).send('Server Error')
     }
 })
+
+// @route GET api/profile
+// @desc This will get profiles
+// @access Public
+
+router.get('/',async(req,res)=>{
+    try {
+        const profile = await Profile.find().populate('user',['name','avatar'])
+        res.json(profile)
+    } catch (err) {
+        console.error(err.message)
+        res.status(500).send('Server Error')
+    }
+})
+
 
 module.exports = router
