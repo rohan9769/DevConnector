@@ -52,7 +52,66 @@ async (req,res)=>{
         linkedin
     } = req.body;
 
-    
+    const profileFields = {}
+    profileFields.user = req.user.id;
+    if(company){
+        profileFields.company = company
+    }
+    if(website){
+        profileFields.website = website
+    }
+    if(location){
+        profileFields.location = location
+    }
+    if(bio){
+        profileFields.bio = bio
+    }
+    if(status){
+        profileFields.status = status
+    }
+    if(githubusername){
+        profileFields.githubusername = githubusername
+    }
+    if(skills){
+        profileFields.skills = skills.split(',').map(skill=>skill.trim())
+    }
+
+    // Making Social Object
+    profileFields.socials = {}
+    if(youtube){
+        profileFields.socials.youtube = youtube
+    }
+    if(twitter){
+        profileFields.socials.twitter = twitter
+    }
+    if(facebook){
+        profileFields.socials.facebook = facebook
+    }
+    if(linkedin){
+        profileFields.socials.linkedin = linkedin
+    }
+    if(instagram){
+        profileFields.socials.instagram = instagram
+    }
+
+
+    try{
+        let profile = await Profile.findOne({ user:req.user.id })
+        if(profile){
+            // Updating the profile
+            profile = await Profile.findOneAndUpdate({ user:req.user.id },{ $set:profileFields },{new:true})
+            return res.json(profile)
+        }
+
+        // Create
+        profile = new Profile(profileFields)
+        await profile.save()
+        res.json(profile)
+        
+    }catch(err){
+        console.error(err.message)
+        res.status(500).send('Server Error')
+    }
 })
 
 module.exports = router
