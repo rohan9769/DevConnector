@@ -14,10 +14,10 @@ const Navbar = () => {
             <a href="profiles.html">Developers</a>
           </li>
           <li>
-            <Link to="/register">Register</Link>
+            <Link to='/register'>Register</Link>
           </li>
           <li>
-            <Link to="/login">Login</Link>
+            <Link to='/login'>Login</Link>
           </li>
         </ul>
       </nav>
