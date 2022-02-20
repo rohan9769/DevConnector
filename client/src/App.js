@@ -12,9 +12,8 @@ import store from './store'
 function App() {
   return (
     <Provider store={store}>
-
       <Router>
-          <Navbar></Navbar>
+            <Navbar></Navbar>
             <Alert></Alert>
             <Routes>
               <Route path="/" element={<Landing/>}></Route>
