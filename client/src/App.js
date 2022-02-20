@@ -15,7 +15,7 @@ function App() {
 
       <Router>
           <Navbar></Navbar>
-          <Alert></Alert>
+            <Alert></Alert>
             <Routes>
               <Route path="/" element={<Landing/>}></Route>
               <Route path="/register" element={<Register/>}></Route>
