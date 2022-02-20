@@ -9,7 +9,7 @@ import {
 export const register = ({name,email,password}) => async dispatch =>{
     const config = {
         headers:{
-            'Content-Type':'application/json'
+            "Content-Type":"application/json"
         }
     }
     const body = JSON.stringify({name,email,password})
@@ -24,12 +24,13 @@ export const register = ({name,email,password}) => async dispatch =>{
         })
     } catch (err) {
         const errors = err.response.data.errors
+        dispatch({
+            type:REGISTER_FAIL
+        })
         if(errors){
             errors.forEach(error => dispatch(setAlert(error.msg,'danger')))
         }
 
-        dispatch({
-            type:REGISTER_FAIL
-        })
+       
     }
 }
