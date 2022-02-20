@@ -4,6 +4,7 @@ import Navbar from "./components/layout/Navbar";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import Landing from "./components/layout/Landing";
+import Alert from "./components/layout/Alert";
 // Redux stuff
 import {Provider} from 'react-redux'
 import store from './store'
@@ -14,6 +15,7 @@ function App() {
 
       <Router>
           <Navbar></Navbar>
+          <Alert></Alert>
             <Routes>
               <Route path="/" element={<Landing/>}></Route>
               <Route path="/register" element={<Register/>}></Route>
