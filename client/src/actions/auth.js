@@ -7,7 +7,8 @@ import {
     USER_LOADED,
     AUTH_ERROR,
     LOGIN_SUCCESS,
-    LOGIN_FAIL
+    LOGIN_FAIL,
+    LOGOUT
 } from './types'
 
 // Loading User
@@ -89,7 +90,10 @@ export const login = (email,password) => async dispatch =>{
         if(errors){
             errors.forEach(error => dispatch(setAlert(error.msg,'danger')))
         }
-
-       
     }
+}
+
+// Logout , will clear profiles too
+export const logout = () => dispatch => {
+    dispatch({type:LOGOUT})
 }
