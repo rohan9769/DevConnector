@@ -10,6 +10,7 @@ import {loadUser} from './actions/auth'
 import setAuthToken from "./utils/setAuthToken";
 import Dashboard from "./components/dashboard/Dashboard";
 import PrivateRoute from "./components/Routing/PrivateRoute";
+import CreateProfile from "./components/profile-forms/CreateProfile";
 // Redux stuff
 import {Provider} from 'react-redux'
 import store from './store'
@@ -34,6 +35,7 @@ const App = () => {
               <Route path="/register" element={<Register/>}></Route>
               <Route path="/login" element={<Login/>}></Route>
               <Route path="/dashboard" element={<PrivateRoute component = {Dashboard}></PrivateRoute>}></Route>
+              <Route path="/create-profile" element={<PrivateRoute component = {CreateProfile}></PrivateRoute>}></Route>
             </Routes>
       </Router>
     </Provider>
